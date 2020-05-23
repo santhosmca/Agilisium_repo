@@ -1,5 +1,5 @@
 {
-  "name": "mywallet",
+  "name": "wallet-tracker",
   "version": "1.0.0",
   "description": "wallet tracker Node.js",
   "main": "index.js",
