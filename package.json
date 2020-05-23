@@ -1,7 +1,7 @@
 {
-  "name": "crud",
+  "name": "mywallet",
   "version": "1.0.0",
-  "description": "Crud Node.js",
+  "description": "wallet teacker Node.js",
   "main": "index.js",
   "scripts": {
     "test": ""
