@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditTransactionComponent implements OnInit {
   transactionForm = new FormGroup({
-    id: new FormControl(''),
+    transactionId: new FormControl(''),
     date: new FormControl(''),
     description: new FormControl(''),
     paymentMode: new FormControl(''),
@@ -25,19 +25,18 @@ export class EditTransactionComponent implements OnInit {
 
   ngOnInit() {
 
-      
+
     this.route.paramMap.subscribe(
       params => {
 
-    this.api.getTranaction(params.get("id")).subscribe(
+    this.api.getTranaction(params.get('id')).subscribe(
       (res: any) => {
-        if (res) {
-       
-          this.transactionForm.controls.id.setValue(res.id);
-          this.transactionForm.controls.date.setValue(res.date);
-          this.transactionForm.controls.description.setValue(res.description);
-          this.transactionForm.controls.paymentMode.setValue(res.paymentMode);
-          this.transactionForm.controls.cost.setValue(res.cost);
+        if (res.length > 0) {
+          this.transactionForm.controls.transactionId.setValue(res[0].transactionId);
+          this.transactionForm.controls.date.setValue(res[0].date);
+          this.transactionForm.controls.description.setValue(res[0].description);
+          this.transactionForm.controls.paymentMode.setValue(res[0].paymentMode);
+          this.transactionForm.controls.cost.setValue(res[0].cost);
 
         }
       },
@@ -45,19 +44,19 @@ export class EditTransactionComponent implements OnInit {
         console.log(error);
       }, () => { }
     );
- });   
+ });
   }
-  onSubmit() {    
+  onSubmit() {
     this.api.updateTranaction(this.transactionForm.value).subscribe(
       (res: any) => {
-        if (res.id) {         
-          this.status = "Transaction is updated";
+        if (res) {
+          this.status = 'Transaction is updated';
         }
       },
       error => {
         console.log(error);
       }, () => { }
-    );  
+    );
 }
 
 }

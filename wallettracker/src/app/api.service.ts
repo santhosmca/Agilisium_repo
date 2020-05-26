@@ -18,18 +18,18 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
   getTracker(): Observable<[]> {
-    return this.http.get<[]>(this.API + 'walleTracker');
+    return this.http.get<[]>(this.API + 'get');
   }
   postTranaction(qparams): Observable<[]> {
-    return this.http.post<[]>(this.API + 'walleTracker', JSON.stringify(qparams), this.options);
+    return this.http.post<[]>(this.API + 'post', JSON.stringify(qparams), this.options);
   }
   updateTranaction(qparams): Observable<[]> {
-    return this.http.put<[]>(this.API + `walleTracker/${qparams.id}`, JSON.stringify(qparams), this.options);
+    return this.http.put<[]>(this.API + `update/${qparams.transactionId}`, JSON.stringify(qparams), this.options);
   }
   deleteTranaction(qparams: any): Observable<[]> {
-   return this.http.delete<[]>(this.API + `walleTracker/${qparams}`);
+   return this.http.delete<[]>(this.API + `delete/${qparams}`);
   }
   getTranaction(qparams: any): Observable<[]> {
-    return this.http.get<[]>(this.API + `walleTracker/${qparams}`);
+    return this.http.get<[]>(this.API + `getbyid/${qparams}`);
    }
 }

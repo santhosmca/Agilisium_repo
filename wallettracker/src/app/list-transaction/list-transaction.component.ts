@@ -27,14 +27,14 @@ export class ListTransactionComponent implements OnInit {
 
 
   ngOnInit() {
-    this.refresh()
+    this.refresh();
   }
 
   deleteTractation(id) {
     this.api.deleteTranaction(id).subscribe(
       (res: any) => {
         if (res) {
-          this.status = "Transaction is Deleted";
+          this.status = 'Transaction is Deleted';
           this.refresh();
         }
       },

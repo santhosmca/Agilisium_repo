@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AddTransactionComponent implements OnInit {
   transactionForm = new FormGroup({
-    id: new FormControl(''),
+    transactionId: new FormControl(''),
     date: new FormControl(''),
     description: new FormControl(''),
     paymentMode: new FormControl(''),
@@ -22,10 +22,11 @@ export class AddTransactionComponent implements OnInit {
 
   }
   onSubmit() {
+    this.transactionForm.controls.transactionId.setValue('trans'+Math.floor((Math.random() * 1000000) + 1));
     this.api.postTranaction(this.transactionForm.value).subscribe(
       (res: any) => {
-        if (res.id) {
-          this.status = "New Transaction is added";
+        if (res) {
+          this.status = 'New Transaction is added';
         }
       },
       error => {

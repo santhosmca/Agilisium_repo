@@ -53,10 +53,10 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td mat-cell *matCellDef="let element">
         <button mat-mini-fab class="m-2">
-          <mat-icon routerLink="/edit-transaction/{{element.id}}">edit</mat-icon>
+          <mat-icon routerLink="/edit-transaction/{{element.transactionId}}">edit</mat-icon>
         </button>
 
-        <button mat-mini-fab class="m-2" (click)="deleteTractation(element.id)">
+        <button mat-mini-fab class="m-2" (click)="deleteTractation(element.transactionId)">
           <mat-icon>delete</mat-icon>
         </button>
 
